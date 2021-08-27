@@ -21,3 +21,7 @@ To see token list add -t or --tokens flag as a command line argument.
 `2#81 // Square root`
 
 `2^4 // Power operator`
+
+`|-8 // Absolute value`
+
+`!5 // Factorial`
