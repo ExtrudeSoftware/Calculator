@@ -62,10 +62,10 @@ class Parser:
 		return expr
 	
 	def unary(self):
-		""" unary -> ( ( "-" | "~" ) unary ) | primary """
+		""" unary -> ( ( "-" | "~" | "!" ) unary ) | primary """
 
-		""" ( ( "-" | "~" ) unary ) """
-		while self.match(TokenTypes.MINUS, TokenTypes.ROUND):
+		""" ( ( "-" | "~" | "!" ) unary ) """
+		while self.match(TokenTypes.MINUS, TokenTypes.ROUND, TokenTypes.BANG):
 			op = self.peek(-1)
 			right = self.unary()
 			return Unary(op, right, self.peek().line)

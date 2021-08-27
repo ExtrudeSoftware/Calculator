@@ -2,6 +2,8 @@ from tokentype import TokenTypes
 from tree import *
 from error import Error
 
+import math
+
 class Interpreter:
 	def __init__(self, filename, source, ast):
 		self.hadError = False
@@ -42,7 +44,13 @@ class Interpreter:
 			return left * right
 		
 		elif self.match(op, TokenTypes.DIV):
-			return left / right
+			# check if right is 0
+			
+			if right == 0:
+				return self.error(expr.line, "Runtime Error: Cannot divide by zero.")
+			
+			else:
+				return left / right
 		
 		elif self.match(op, TokenTypes.POW):
 			return left ** right
@@ -66,6 +74,9 @@ class Interpreter:
 		
 		elif op == TokenTypes.ROUND:
 			return round(right)
+		
+		elif op == TokenTypes.BANG:
+			return math.factorial(right)
 	
 	def visit_grouping(self, expr):
 		return expr.expr.accept(self)
@@ -78,3 +89,8 @@ class Interpreter:
 				return True
 		
 		return False
+	
+	def error(self, line, message):
+		# throw a runtime error
+		Error.error(self.filename, self.source.split("\n")[line - 1], line, message)
+		self.hadError = True

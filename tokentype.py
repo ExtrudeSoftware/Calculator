@@ -12,6 +12,7 @@ class TokenTypes(Enum):
 	ROOT = auto() # symbol: #
 	POW = auto() # symbol: ^
 	ROUND = auto() # symbol: ~
+	BANG = auto() # symbol: !
 
 	LPAREN = auto()
 	RPAREN = auto()

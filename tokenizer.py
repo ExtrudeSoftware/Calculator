@@ -43,6 +43,7 @@ class Tokenizer:
 			"#": (lambda: self.addToken(TokenTypes.ROOT, self.source[self.index])),
 			"^": (lambda: self.addToken(TokenTypes.POW, self.source[self.index])),
 			"~": (lambda: self.addToken(TokenTypes.ROUND, self.source[self.index])),
+			"!": (lambda: self.addToken(TokenTypes.BANG, self.source[self.index])),
 		}
 
 		if chars.get(c):
