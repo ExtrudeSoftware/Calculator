@@ -103,7 +103,7 @@ def main():
 			if interpreter.hadError:
 				continue
 
-			if result:
+			if result == 0 or result:
 				print(result)
 	
 	except KeyboardInterrupt:

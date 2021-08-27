@@ -49,8 +49,7 @@ class Interpreter:
 			if right == 0:
 				return self.error(expr.line, "Runtime Error: Cannot divide by zero.")
 			
-			else:
-				return left / right
+			return left / right
 		
 		elif self.match(op, TokenTypes.POW):
 			return left ** right
@@ -76,7 +75,13 @@ class Interpreter:
 			return round(right)
 		
 		elif op == TokenTypes.BANG:
+			if right < 0:
+				return self.error(expr.line, "Runtime Error: Unary factorial's operator cannot be less than zero.")
+
 			return math.factorial(right)
+		
+		elif op == TokenTypes.PIPE:
+			return abs(right)
 	
 	def visit_grouping(self, expr):
 		return expr.expr.accept(self)

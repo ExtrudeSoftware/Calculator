@@ -13,6 +13,7 @@ class TokenTypes(Enum):
 	POW = auto() # symbol: ^
 	ROUND = auto() # symbol: ~
 	BANG = auto() # symbol: !
+	PIPE = auto() # symbol: |
 
 	LPAREN = auto()
 	RPAREN = auto()
